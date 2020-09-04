@@ -18,23 +18,22 @@ OBJ=$(subst .c,.o,$(subst src,build,$(C_SOURCE)))
 
 
 # Compilação
-all: $(NOME_PROJ)
+build: $(NOME_PROJ)
 
 $(NOME_PROJ): $(OBJ)
 	@ echo 'Compilando o binário final: $@'
 	$(CC) -o $(NOME_PROJ) $(OBJ)
+	@ echo ' '
 	@ echo 'Compilação concluída: $@'
 	@ echo ' '
 
-build/%.o: src/%.c
+build/%.o: src/%.c $(H_SOURCE)
 	@ echo 'Compilando o arquivo: $<'
 	$(CC) $(CC_FLAGS) -c $< -o $@
 	@ echo ' '
 
-build/main.o: src/main.c $(H_SOURCE)
-	@ echo 'Compilando o arquivo: $<'
-	$(CC) $(CC_FLAGS) -c src/main.c -o build/main.o
-	@ echo ' '
-
 clean:
-	@ rm -rf build/%.o $(NOME_PROJ)
+	@ rm -rf $(wildcard build/*.o) $(NOME_PROJ)
+
+run:
+	@ ./$(NOME_PROJ)
