@@ -37,6 +37,18 @@ int main()
 
     wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
 
+    hand1->adiciona(hand1, cria_card(DIAMONDS, TWO));
+    hand1->adiciona(hand1, cria_card(SPADES, ACE));
+    hand1->adiciona(hand1, cria_card(HEARTS, ACE));
+    hand1->adiciona(hand1, cria_card(DIAMONDS, SEVEN));
+    hand1->adiciona(hand1, cria_card(CLUBS, JACK));
+
+    wprintf(L"\n");
+    hand1->imprime(hand1);
+    wprintf(L"\n");
+
+    wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
+
     hand1->libera(hand1);
 
     return 0;
