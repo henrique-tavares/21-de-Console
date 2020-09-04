@@ -2,9 +2,19 @@
 
 #include <locale.h>
 
+void logo()
+{
+    wprintf(
+        L"__                 __                  \n"
+        L" _)/|     _| _    /   _ __  _  _  |  _ \n"
+        L"/__ |    (_|(/_   \\__(_)| |_> (_) | (/_\n");
+}
+
 int main()
 {
     setlocale(LC_CTYPE, "");
+
+    logo();
 
     Hand *hand1 = cria_hand();
 
