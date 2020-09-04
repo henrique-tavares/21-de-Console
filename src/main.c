@@ -15,6 +15,7 @@ int main()
     setlocale(LC_CTYPE, "");
 
     logo();
+    wprintf(L"\n\tDealer (⌐■_■):\n");
 
     Hand *hand1 = cria_hand();
 
