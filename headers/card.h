@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <wchar.h>
+#include <stdbool.h>
 
 typedef enum CardSuit CardSuit;
 typedef enum CardDisplay CardDisplay;
@@ -46,4 +47,4 @@ struct Card
     void (*print_lower)(Card *self);
 };
 
-Card *cria_carta(CardSuit suit, CardDisplay display);
+Card *cria_card(CardSuit suit, CardDisplay display);

@@ -1,10 +1,10 @@
 #include "../headers/card.h"
 
-Card *cria_carta(CardSuit suit, CardDisplay display);
-void libera_carta(Card *self);
-void print_upper_carta(Card *self);
-void print_middle_carta(Card *self);
-void print_lower_carta(Card *self);
+Card *cria_card(CardSuit suit, CardDisplay display);
+void libera_card(Card *self);
+void print_upper_card(Card *self);
+void print_middle_card(Card *self);
+void print_lower_card(Card *self);
 
 const char *COLOR_RESET = "\033[0m";
 const char *TEXT_RED = "\033[0;31m";
@@ -13,7 +13,7 @@ const char *TEXT_WHITE = "\033[0;47m";
 const char *CARD_BACKGOUND = "\033[47m";
 const char *CARD_BACK = "\033[41m";
 
-Card *cria_carta(CardSuit suit, CardDisplay display)
+Card *cria_card(CardSuit suit, CardDisplay display)
 {
     Card *carta = (Card *)malloc(sizeof(Card));
 
@@ -80,16 +80,16 @@ Card *cria_carta(CardSuit suit, CardDisplay display)
         break;
     }
 
-    carta->libera = &libera_carta;
+    carta->libera = &libera_card;
 
-    carta->print_upper = &print_upper_carta;
-    carta->print_middle = &print_middle_carta;
-    carta->print_lower = &print_lower_carta;
+    carta->print_upper = &print_upper_card;
+    carta->print_middle = &print_middle_card;
+    carta->print_lower = &print_lower_card;
 
     return carta;
 }
 
-void libera_carta(Card *self)
+void libera_card(Card *self)
 {
     self->libera = NULL;
 
@@ -100,7 +100,7 @@ void libera_carta(Card *self)
     free(self);
 }
 
-void print_upper_carta(Card *self)
+void print_upper_card(Card *self)
 {
     if (self->suit == HEARTS || self->suit == DIAMONDS)
     {
@@ -112,12 +112,12 @@ void print_upper_carta(Card *self)
     }
 }
 
-void print_middle_carta(Card *self)
+void print_middle_card(Card *self)
 {
     wprintf(L" %s%s  %c  %s ", TEXT_BLACK, CARD_BACKGOUND, self->display, COLOR_RESET);
 }
 
-void print_lower_carta(Card *self)
+void print_lower_card(Card *self)
 {
     if (self->suit == HEARTS || self->suit == DIAMONDS)
     {
