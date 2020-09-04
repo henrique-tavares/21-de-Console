@@ -8,36 +8,33 @@ CC=gcc
 CC_FLAGS=-W -Wall
 
 # arquivos .c
-C_SOURCE=$(wildcard ./src/*.c)
+C_SOURCE=$(wildcard src/*.c)
 
 # arquivos .h
-H_SOURCE=$(wildcard ./headers/*.h)
+H_SOURCE=$(wildcard headers/*.h)
 
 # arquivos objeto (.o)
-OBJ=$(subst .c, .o,$(subst src, build, $(C_SOURCE)))
+OBJ=$(subst .c,.o,$(subst src,build,$(C_SOURCE)))
+
 
 # Compilação
 all: $(NOME_PROJ)
 
 $(NOME_PROJ): $(OBJ)
 	@ echo 'Compilando o binário final: $@'
-	$(CC) -o ./$(NOME_PROJ) $^
+	$(CC) -o $(NOME_PROJ) $(OBJ)
 	@ echo 'Compilação concluída: $@'
 	@ echo ' '
 
-./build/%.o: ./src/%.c ./src/%.h
+build/%.o: src/%.c
 	@ echo 'Compilando o arquivo: $<'
-	$(CC) -o $@ -c $< $(CC_FLAGS)
+	$(CC) $(CC_FLAGS) -c $< -o $@
 	@ echo ' '
 
-./build/main.o: ./src/main.c $(H_SOURCE)
+build/main.o: src/main.c $(H_SOURCE)
 	@ echo 'Compilando o arquivo: $<'
-	$(CC) -o $@ -c $< $(CC_FLAGS)
+	$(CC) $(CC_FLAGS) -c src/main.c -o build/main.o
 	@ echo ' '
-
-buildFolder:
-	@ mkdir -p build
 
 clean:
-	@ rm -rf ./build/%.o ./$(NOME_PROJ)
-	@ rmdir build
+	@ rm -rf build/%.o $(NOME_PROJ)
