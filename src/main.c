@@ -15,7 +15,6 @@ int main()
     setlocale(LC_CTYPE, "");
 
     logo();
-    wprintf(L"\n\tDealer (⌐■_■):\n");
 
     Hand *hand1 = cria_hand();
 
@@ -37,7 +36,7 @@ int main()
     hand1->imprime(hand1);
     wprintf(L"\n");
 
-    wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
+    wprintf(L"\n\tDealer (⌐■_■) -> Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
 
     wprintf(L"\nLimpando a mão...\n");
     hand1->limpa(hand1);
