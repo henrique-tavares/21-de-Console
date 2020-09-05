@@ -5,7 +5,7 @@ void libera_player(Player *self);
 bool draw_player(Player *self, Deck *deck);
 bool stop_player(Player *self);
 
-Player *cria_player(Player *self)
+Player *cria_player()
 {
     Player *player = (Player *)malloc(sizeof(Player));
 
@@ -19,6 +19,8 @@ Player *cria_player(Player *self)
     player->libera = &libera_player;
     player->draw = &draw_player;
     player->stop = &stop_player;
+
+    return player;
 }
 
 void libera_player(Player *self)
@@ -43,8 +45,8 @@ bool stop_player(Player *self)
 {
     char response;
 
-    wprintf("\n\tDeseja continuar comprando (s/n)? ");
-    wscanf("%c", &response);
+    wprintf(L"\n\tDeseja continuar comprando (s/n)? ");
+    wscanf(L"%c", &response);
 
     switch (response)
     {
