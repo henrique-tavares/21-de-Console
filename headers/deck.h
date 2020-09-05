@@ -24,7 +24,7 @@ struct Deck
     void (*push)(Deck *self, Card *card);
     Card *(*peek)(Deck *self);
 
-    bool *(*vazio)(Deck *self);
+    bool (*vazio)(Deck *self);
 };
 
 Deck *cria_deck();
