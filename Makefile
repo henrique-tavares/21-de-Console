@@ -21,7 +21,7 @@ OBJ=$(subst .c,.o,$(subst src,build,$(C_SOURCE)))
 build: $(NOME_PROJ)
 
 $(NOME_PROJ): $(OBJ)
-	@ echo 'Compilando o binário final: $@'
+	@ echo 'Construíndo o binário final: $@'
 	$(CC) -o $(NOME_PROJ) $(OBJ)
 	@ echo ' '
 	@ echo 'Compilação concluída: $@'
