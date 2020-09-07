@@ -1,10 +1,10 @@
 #pragma once
 
-#include <stdio.h>
 #include <time.h>
 
-#include "card.h"
-#include "deck.h"
+#include "./failure.h"
+#include "./card.h"
+#include "./deck.h"
 
 // Recebe o endereço de memória do deck e adiciona as cartas embaralhadas
-void shuffleCards(Deck *deck);
+void shuffle_deck(Deck *deck);
