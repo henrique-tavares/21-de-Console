@@ -31,7 +31,6 @@ enum CardDisplay
     JACK = 'J',
     QUEEN = 'Q',
     KING = 'K',
-
 };
 
 struct Card
