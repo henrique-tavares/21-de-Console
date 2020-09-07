@@ -30,7 +30,17 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "../build/card.o"
+                "../build/card.o",
+                "../build/credits.o",
+                "../build/dealer.o",
+                "../build/deck.o",
+                "../build/failure.o",
+                "../build/game.o",
+                "../build/hand.o",
+                "../build/instructions.o",
+                "../build/menu.o",
+                "../build/player.o",
+                "../build/shuffle.o"
             ],
             "options": {
                 "cwd": "${fileDirname}"
