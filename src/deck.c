@@ -1,4 +1,5 @@
 #include "../headers/deck.h"
+#include "../headers/shuffle.h"
 
 DeckCard *cria_deck_card(Card *card);
 void libera_deck_card(DeckCard *self);
@@ -52,6 +53,8 @@ Deck *cria_deck()
     deck->push = &push_deck;
     deck->peek = &peek_deck;
     deck->vazio = &vazio_deck;
+
+    shuffle_deck(deck);
 
     return deck;
 }

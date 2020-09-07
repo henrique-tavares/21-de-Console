@@ -1,70 +1,50 @@
 #include "../headers/shuffle.h"
 
-#define getRandomTime() srand(time(NULL));
+#define get_random_time() srand(time(NULL));
+#define card_not_in_deck(suit, value) lista_cards[suit][value] == 0
 
-#define NumeroDeNaipes 4
-#define NumeroDeCartas 13
+#define numero_naipes 4
+#define numero_cartas 13
 
-u_int16_t listaSuit[NumeroDeNaipes] = {HEARTS, DIAMONDS, CLUBS, SPADES};
+short int lista_suit[numero_naipes] = {HEARTS, DIAMONDS, CLUBS, SPADES};
 
-u_int8_t listaCartds[NumeroDeNaipes][NumeroDeCartas] = {
+short int lista_cards[numero_naipes][numero_cartas] = {
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}};
 
-static void isNullExitFailure(void *ptr, const char *ErrorMessage)
+void is_null_exit_failure(void *ptr, const char *message)
 {
-  if (ptr == NULL)
-  {
-    perror(ErrorMessage);
-    exit(EXIT_FAILURE);
-  }
+    if (ptr == NULL)
+    {
+        wprintf(L"%s", message);
+        exit(EXIT_FAILURE);
+    }
 }
 
-static int findCardInDeck(u_int8_t *suit, u_int8_t *card)
+void randomize_card(short int *suit, short int *display_value)
 {
-  if (listaCartds[*suit][*card] == 0)
-  {
-    return 1;
-    // if (*card < NumeroDeCartas - 1)
-    // {
-    //   *card++;
-    // }
-    // else if (*suit < NumeroDeNaipes - 1)
-    // {
-    //   *suit++;
-    // }
-    // else
-    // {
-    //   *card = 0;
-    //   *suit = 0;
-    // }
-    // findCardInDeck(suit, card);
-  }
-  return 0;
+    do
+    {
+        *suit = rand() % numero_naipes;
+        *display_value = rand() % numero_cartas;
+    } while (card_not_in_deck(*suit, *display_value));
 }
 
-static void selectRandomCard(u_int8_t *suit, u_int8_t *card)
+void shuffle_deck(Deck *deck)
 {
-  do{
-    *suit = rand() % NumeroDeNaipes;
-    *card = rand() % NumeroDeCartas;
-  } while (findCardInDeck(suit, card));
-}
+    for (short int total_cartas = (numero_cartas * numero_naipes); total_cartas > 0; total_cartas--)
+    {
+        get_random_time();
 
-void shuffleCards(Deck *deck)
-{
-  u_int8_t totalCartas = (NumeroDeCartas * NumeroDeNaipes);
-  while (totalCartas--)
-  {
-    getRandomTime();
-    u_int8_t suit, card;
-    selectRandomCard(&suit, &card);
-    Card *carta = cria_card(listaSuit[suit], listaCartds[suit][card]);
-    isNullExitFailure(carta, "Erro ao criar carta para adicionar a mão, shuffle.c");
+        short int suit, display_value;
+        randomize_card(&suit, &display_value);
 
-    deck->push(deck, carta);
-    listaCartds[suit][card] = 0;
-  }
+        Card *carta = cria_card(lista_suit[suit], lista_cards[suit][display_value]);
+        is_null_failure(carta, "Erro ao criar carta para adicionar ao deck, shuffle.c");
+
+        deck->push(deck, carta);
+        lista_cards[suit][display_value] = 0;
+    }
 }
