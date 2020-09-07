@@ -1,6 +1,6 @@
 #include "../headers/shuffle.h"
 
-#define getRandomTime(number) srand(time(NULL) * number / 3);
+#define getRandomTime() srand(time(NULL));
 
 #define NumeroDeNaipes 4
 #define NumeroDeCartas 13
@@ -58,7 +58,7 @@ void shuffleCards(Deck *deck)
   u_int8_t totalCartas = (NumeroDeCartas * NumeroDeNaipes);
   while (totalCartas--)
   {
-    getRandomTime(totalCartas);
+    getRandomTime();
     u_int8_t suit, card;
     selectRandomCard(&suit, &card);
     Card *carta = cria_card(listaSuit[suit], listaCartds[suit][card]);
