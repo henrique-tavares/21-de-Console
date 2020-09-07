@@ -7,4 +7,4 @@
 #include "deck.h"
 
 // Recebe o endereço de memória do deck e adiciona as cartas embaralhadas
-void shuffleHandCards(Deck *deck);
+void shuffleCards(Deck *deck);

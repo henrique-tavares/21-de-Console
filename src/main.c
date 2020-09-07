@@ -1,5 +1,6 @@
 #include "../headers/hand.h"
-
+#include "../headers/deck.h"
+#include "../headers/shuffle.h"
 #include <locale.h>
 
 void logo()
@@ -47,11 +48,18 @@ int main()
 
     wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
 
-    hand1->adiciona(hand1, cria_card(DIAMONDS, TWO));
-    hand1->adiciona(hand1, cria_card(SPADES, ACE));
-    hand1->adiciona(hand1, cria_card(HEARTS, ACE));
-    hand1->adiciona(hand1, cria_card(DIAMONDS, SEVEN));
-    hand1->adiciona(hand1, cria_card(CLUBS, JACK));
+    Deck *deck = cria_deck();
+    shuffleCards(deck);
+    while (!deck->vazio(deck))
+    {
+        hand1->adiciona(hand1, deck->pop(deck));
+    }
+
+    // hand1->adiciona(hand1, cria_card(DIAMONDS, TWO));
+    // hand1->adiciona(hand1, cria_card(SPADES, ACE));
+    // hand1->adiciona(hand1, cria_card(HEARTS, ACE));
+    // hand1->adiciona(hand1, cria_card(DIAMONDS, SEVEN));
+    // hand1->adiciona(hand1, cria_card(CLUBS, JACK));
 
     wprintf(L"\n");
     hand1->imprime(hand1);
