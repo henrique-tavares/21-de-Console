@@ -2,6 +2,8 @@
 
 Player *cria_player();
 void libera_player(Player *self);
+void init_player(Player *self, Deck *deck);
+void imprime_player(Player *self);
 bool draw_player(Player *self, Deck *deck);
 bool stop_player(Player *self);
 
@@ -17,6 +19,8 @@ Player *cria_player()
     player->hand = cria_hand();
 
     player->libera = &libera_player;
+    player->init = &init_player;
+    player->imprime = &imprime_player;
     player->draw = &draw_player;
     player->stop = &stop_player;
 
@@ -28,10 +32,25 @@ void libera_player(Player *self)
     self->hand->libera(self->hand);
 
     self->libera = NULL;
+    self->init = NULL;
+    self->imprime = NULL;
     self->draw = NULL;
     self->stop = NULL;
 
     free(self);
+}
+
+void init_player(Player *self, Deck *deck)
+{
+    self->draw(self, deck);
+    self->draw(self, deck);
+}
+
+void imprime_player(Player *self)
+{
+    wprintf(L"\n(ಠ_ಠ) Player:\n");
+    self->hand->imprime(self->hand);
+    wprintf(L"\nValor total: %d\n", self->hand->total);
 }
 
 bool draw_player(Player *self, Deck *deck)
@@ -45,24 +64,20 @@ bool stop_player(Player *self)
 {
     char response;
 
-    wprintf(L"\n\tDeseja continuar comprando (s/n)? ");
+    wprintf(L"\nVocê deseja parar (s/n)? ");
     wscanf(L"%c", &response);
+    getwchar();
 
-    switch (response)
+    if (response == 's' || response == 'S')
     {
-    case 'y':
         return true;
-
-    case 'Y':
-        return true;
-
-    case 'n':
+    }
+    else if (response == 'n' || response == 'N')
+    {
         return false;
-
-    case 'N':
-        return false;
-
-    default:
+    }
+    else
+    {
         return stop_player(self);
     }
 }
