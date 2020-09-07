@@ -1,73 +1,35 @@
-#include "../headers/hand.h"
-#include "../headers/deck.h"
-#include "../headers/shuffle.h"
 #include <locale.h>
 
-void logo()
-{
-    wprintf(
-        L"\t__                 __                  \n"
-        L"\t _)/|     _| _    /   _ __  _  _  |  _ \n"
-        L"\t/__ |    (_|(/_   \\__(_)| |_> (_) | (/_\n");
-}
+#include "../headers/menu.h"
+#include "../headers/game.h"
+#include "../headers/instructions.h"
+#include "../headers/credits.h"
 
 int main()
 {
     setlocale(LC_CTYPE, "");
 
-    logo();
-
-    Hand *hand1 = cria_hand();
-
-    hand1->adiciona(hand1, cria_card(HEARTS, ACE));
-    hand1->adiciona(hand1, cria_card(HEARTS, TWO));
-    hand1->adiciona(hand1, cria_card(HEARTS, THREE));
-    hand1->adiciona(hand1, cria_card(HEARTS, FOUR));
-    hand1->adiciona(hand1, cria_card(HEARTS, FIVE));
-    hand1->adiciona(hand1, cria_card(HEARTS, SIX));
-    hand1->adiciona(hand1, cria_card(HEARTS, SEVEN));
-    hand1->adiciona(hand1, cria_card(HEARTS, EIGHT));
-    hand1->adiciona(hand1, cria_card(HEARTS, NINE));
-    hand1->adiciona(hand1, cria_card(HEARTS, TEN));
-    hand1->adiciona(hand1, cria_card(HEARTS, JACK));
-    hand1->adiciona(hand1, cria_card(HEARTS, QUEEN));
-    hand1->adiciona(hand1, cria_card(HEARTS, KING));
-
-    wprintf(L"\n");
-    hand1->imprime(hand1);
-    wprintf(L"\n");
-
-    wprintf(L"\n\tDealer (⌐■_■) -> Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
-
-    wprintf(L"\nLimpando a mão...\n");
-    hand1->limpa(hand1);
-
-    wprintf(L"\n");
-    hand1->imprime(hand1);
-    wprintf(L"\n");
-
-    wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
-
-    Deck *deck = cria_deck();
-    shuffleCards(deck);
-    while (!deck->vazio(deck))
+    while (true)
     {
-        hand1->adiciona(hand1, deck->pop(deck));
+        switch (menu())
+        {
+        case 1:
+            system("clear");
+            game();
+            break;
+
+        case 2:
+            system("clear");
+            instructions();
+            break;
+
+        case 3:
+            system("clear");
+            credits();
+            break;
+
+        case 0:
+            exit(EXIT_SUCCESS);
+        }
     }
-
-    // hand1->adiciona(hand1, cria_card(DIAMONDS, TWO));
-    // hand1->adiciona(hand1, cria_card(SPADES, ACE));
-    // hand1->adiciona(hand1, cria_card(HEARTS, ACE));
-    // hand1->adiciona(hand1, cria_card(DIAMONDS, SEVEN));
-    // hand1->adiciona(hand1, cria_card(CLUBS, JACK));
-
-    wprintf(L"\n");
-    hand1->imprime(hand1);
-    wprintf(L"\n");
-
-    wprintf(L"Quatidade: %d, Valor total: %d\n", hand1->quantidade, hand1->total);
-
-    hand1->libera(hand1);
-
-    return 0;
 }
