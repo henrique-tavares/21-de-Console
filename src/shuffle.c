@@ -14,15 +14,6 @@ short int lista_cards[numero_naipes][numero_cartas] = {
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
     {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}};
 
-void is_null_exit_failure(void *ptr, const char *message)
-{
-    if (ptr == NULL)
-    {
-        wprintf(L"%s", message);
-        exit(EXIT_FAILURE);
-    }
-}
-
 void randomize_card(short int *suit, short int *display_value)
 {
     do
@@ -40,11 +31,8 @@ void shuffle_deck(Deck *deck)
 
         short int suit, display_value;
         randomize_card(&suit, &display_value);
-
-        Card *carta = cria_card(lista_suit[suit], lista_cards[suit][display_value]);
-        is_null_failure(carta, "Erro ao criar carta para adicionar ao deck, shuffle.c");
-
-        deck->push(deck, carta);
+        
+        deck->push(deck, cria_card(lista_suit[suit], lista_cards[suit][display_value]));
         lista_cards[suit][display_value] = 0;
     }
 }
