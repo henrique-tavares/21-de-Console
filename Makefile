@@ -8,10 +8,10 @@ CC=gcc
 CC_FLAGS=-W -Wall
 
 # arquivos .c
-C_SOURCE=$(wildcard src/*.c)
+C_SOURCE=$(wildcard src/*)
 
 # arquivos .h
-H_SOURCE=$(wildcard headers/*.h)
+H_SOURCE=$(wildcard headers/*)
 
 # arquivos objeto (.o)
 OBJ=$(subst .c,.o,$(subst src,build,$(C_SOURCE)))

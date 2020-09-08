@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include "../headers/clean_screen.h"
 
 #include "../headers/game.h"
 
@@ -13,7 +14,7 @@ void start()
     wprintf(L".\n");
     sleep(1);
 
-    system("clear");
+    clean_screen();
 }
 
 void game()
@@ -63,7 +64,7 @@ void game()
             }
         }
 
-        system("clear");
+        clean_screen();
 
     } while (dealer->on_game || player->on_game);
 

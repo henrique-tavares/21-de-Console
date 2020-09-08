@@ -1,11 +1,12 @@
 #include <wchar.h>
 #include <stdlib.h>
+#include "../headers/clean_screen.h"
 
 #include "../headers/menu.h"
 
 int menu()
 {
-    system("clear");
+    clean_screen();
 
     int response;
 
