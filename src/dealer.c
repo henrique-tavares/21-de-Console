@@ -1,4 +1,5 @@
 #include "../headers/dealer.h"
+#include "../headers/failure.h"
 
 Dealer *cria_dealer();
 void libera_dealer(Dealer *self);
@@ -10,11 +11,7 @@ bool stop_dealer(Dealer *self);
 Dealer *cria_dealer()
 {
     Dealer *dealer = (Dealer *)malloc(sizeof(Dealer));
-
-    if (!dealer)
-    {
-        return NULL;
-    }
+    is_null_failure(dealer, "Erro ao criar Dealer");
 
     dealer->hand = cria_hand();
     dealer->on_game = true;

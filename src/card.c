@@ -1,4 +1,5 @@
 #include "../headers/card.h"
+#include "../headers/failure.h"
 
 Card *cria_card(CardSuit suit, CardDisplay display);
 void libera_card(Card *self);
@@ -16,11 +17,7 @@ const char *CARD_BACK = "\033[41m";
 Card *cria_card(CardSuit suit, CardDisplay display)
 {
     Card *carta = (Card *)malloc(sizeof(Card));
-
-    if (!carta)
-    {
-        return NULL;
-    }
+    is_null_failure(carta, "Erro ao criar Card");
 
     carta->suit = suit;
     carta->display = display;

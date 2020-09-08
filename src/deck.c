@@ -1,5 +1,6 @@
 #include "../headers/deck.h"
 #include "../headers/shuffle.h"
+#include "../headers/failure.h"
 
 DeckCard *cria_deck_card(Card *card);
 void libera_deck_card(DeckCard *self);
@@ -7,11 +8,7 @@ void libera_deck_card(DeckCard *self);
 DeckCard *cria_deck_card(Card *card)
 {
     DeckCard *deck_card = (DeckCard *)malloc(sizeof(DeckCard));
-
-    if (!deck_card)
-    {
-        return NULL;
-    }
+    is_null_failure(deck_card,"Erro ao criar DeckCard");
 
     deck_card->card = card;
     deck_card->prox = NULL;
@@ -39,11 +36,7 @@ bool vazio_deck(Deck *self);
 Deck *cria_deck()
 {
     Deck *deck = (Deck *)malloc(sizeof(Deck));
-
-    if (!deck)
-    {
-        return NULL;
-    }
+    is_null_failure(deck, "Erro ao criar Deck");
 
     deck->topo = NULL;
     deck->tamanho = 0;
@@ -98,11 +91,6 @@ Card *pop_deck(Deck *self)
 void push_deck(Deck *self, Card *card)
 {
     DeckCard *deck_card = cria_deck_card(card);
-
-    if (!deck_card)
-    {
-        return;
-    }
 
     deck_card->prox = self->topo;
     self->topo = deck_card;

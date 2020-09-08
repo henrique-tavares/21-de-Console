@@ -1,4 +1,5 @@
 #include "../headers/player.h"
+#include "../headers/failure.h"
 
 Player *cria_player();
 void libera_player(Player *self);
@@ -10,11 +11,7 @@ bool stop_player(Player *self);
 Player *cria_player()
 {
     Player *player = (Player *)malloc(sizeof(Player));
-
-    if (!player)
-    {
-        return NULL;
-    }
+    is_null_failure(player, "Erro ao criar Player");
 
     player->hand = cria_hand();
 

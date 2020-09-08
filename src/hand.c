@@ -1,4 +1,5 @@
 #include "../headers/hand.h"
+#include "../headers/failure.h"
 
 void libera_hand_card(HandCard *self);
 
@@ -11,11 +12,7 @@ bool vazio_hand(Hand *self);
 HandCard *cria_hand_card(Card *carta)
 {
     HandCard *hand_card = (HandCard *)malloc(sizeof(HandCard));
-
-    if (!hand_card)
-    {
-        return NULL;
-    }
+    is_null_failure(hand_card, "Erro ao criar HandCard");
 
     hand_card->carta = carta;
     hand_card->prox = NULL;
@@ -37,10 +34,7 @@ Hand *cria_hand()
 {
     Hand *hand = (Hand *)malloc(sizeof(Hand));
 
-    if (!hand)
-    {
-        return NULL;
-    }
+    is_null_failure(hand, "Erro ao criar Hand");
 
     hand->primeiro = NULL;
     hand->ultimo = NULL;
