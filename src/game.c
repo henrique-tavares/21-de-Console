@@ -3,17 +3,22 @@
 
 #include "../headers/game.h"
 
-void start()
+void loading()
 {
-    wprintf(L"\nIniciando o jogo\n");
+    wprintf(L"\nIniciando o jogo [   ]\n");
     sleep(1);
-    wprintf(L".\n");
-    sleep(1);
-    wprintf(L".\n");
-    sleep(1);
-    wprintf(L".\n");
-    sleep(1);
+    clean_screen();
 
+    wprintf(L"\nIniciando o jogo [=  ]\n");
+    sleep(1);
+    clean_screen();
+
+    wprintf(L"\nIniciando o jogo [== ]\n");
+    sleep(1);
+    clean_screen();
+
+    wprintf(L"\nIniciando o jogo [===]\n");
+    sleep(1);
     clean_screen();
 }
 
@@ -29,7 +34,7 @@ void game()
     player->init(player, deck);
     dealer->init(dealer, deck);
 
-    start();
+    loading();
 
     do
     {
