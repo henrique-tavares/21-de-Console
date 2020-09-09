@@ -8,7 +8,7 @@ void libera_deck_card(DeckCard *self);
 DeckCard *cria_deck_card(Card *card)
 {
     DeckCard *deck_card = (DeckCard *)malloc(sizeof(DeckCard));
-    is_null_failure(deck_card,"Erro ao criar DeckCard");
+    is_null_failure(deck_card, "Erro ao criar DeckCard");
 
     deck_card->card = card;
     deck_card->prox = NULL;
@@ -54,7 +54,7 @@ Deck *cria_deck()
 
 void libera_deck(Deck *self)
 {
-    while (!self->vazio(self))
+    while (!(self->vazio(self)))
     {
         Card *card_aux = self->pop(self);
         card_aux->libera(card_aux);
