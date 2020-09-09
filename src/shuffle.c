@@ -1,38 +1,38 @@
 #include "../headers/shuffle.h"
 
 #define get_random_time() srand(time(NULL));
-#define card_not_in_deck(suit, value) lista_cards[suit][value] == 0
 
-#define numero_naipes 4
-#define numero_cartas 13
+#define qtd_suits 4
+#define qtd_display_values 13
 
-short int lista_suit[numero_naipes] = {HEARTS, DIAMONDS, CLUBS, SPADES};
+const int lista_suits[qtd_suits] = {HEARTS, DIAMONDS, CLUBS, SPADES};
 
-short int lista_cards[numero_naipes][numero_cartas] = {
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}};
+const int lista_display_values[qtd_display_values] = {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
 
-void randomize_card(short int *suit, short int *display_value)
+int randomize_hand_index(Hand *hand)
 {
-    do
+    return rand() % hand->quantidade;
+}
+
+void fill_all_cards(Hand *hand)
+{
+    for (int suit = 0; suit < qtd_suits; suit++)
     {
-        *suit = rand() % numero_naipes;
-        *display_value = rand() % numero_cartas;
-    } while (card_not_in_deck(*suit, *display_value));
+        for (int display_values = 0; display_values < qtd_display_values; display_values++)
+        {
+            get_random_time();
+            hand->adiciona(hand, cria_card(lista_suits[suit], lista_display_values[display_values]));
+        }
+    }
 }
 
 void shuffle_deck(Deck *deck)
 {
-    for (short int total_cartas = (numero_cartas * numero_naipes); total_cartas > 0; total_cartas--)
-    {
-        get_random_time();
+    Hand *hand = cria_hand();
+    fill_all_cards(hand);
 
-        short int suit, display_value;
-        randomize_card(&suit, &display_value);
-        
-        deck->push(deck, cria_card(lista_suit[suit], lista_cards[suit][display_value]));
-        lista_cards[suit][display_value] = 0;
+    while (!(hand->vazio(hand)))
+    {
+        deck->push(deck, hand->remove(hand, randomize_hand_index(hand)));
     }
 }
