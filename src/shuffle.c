@@ -35,4 +35,6 @@ void shuffle_deck(Deck *deck)
     {
         deck->push(deck, hand->remove(hand, randomize_hand_index(hand)));
     }
+
+    hand->libera(hand);
 }
