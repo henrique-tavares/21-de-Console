@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../headers/player.h"
-#include "../headers/dealer.h"
+#include "./player.h"
+#include "./dealer.h"
+#include "./failure.h"
 
 void game();
