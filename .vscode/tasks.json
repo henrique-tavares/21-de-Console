@@ -31,6 +31,7 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "../build/card.o",
+                "../build/clean_screen.o",
                 "../build/credits.o",
                 "../build/dealer.o",
                 "../build/deck.o",

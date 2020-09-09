@@ -4,7 +4,6 @@
 
 #include "./failure.h"
 #include "./hand.h"
-#include "./card.h"
 #include "./deck.h"
 
 // Recebe o endereço de memória do deck e adiciona as cartas embaralhadas

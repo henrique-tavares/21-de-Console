@@ -14,6 +14,7 @@ Dealer *cria_dealer()
     is_null_failure(dealer, "Erro ao criar Dealer");
 
     dealer->hand = cria_hand();
+
     dealer->on_game = true;
 
     dealer->libera = &libera_dealer;
