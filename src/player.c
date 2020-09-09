@@ -15,6 +15,8 @@ Player *cria_player()
 
     player->hand = cria_hand();
 
+    player->on_game = true;
+
     player->libera = &libera_player;
     player->init = &init_player;
     player->imprime = &imprime_player;
