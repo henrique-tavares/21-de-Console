@@ -1,38 +1,30 @@
 #include "../headers/shuffle.h"
 
 #define get_random_time() srand(time(NULL));
-#define card_not_in_deck(suit, value) lista_cards[suit][value] == 0
-
+#define get_random_index(max) rand() % max
 #define numero_naipes 4
 #define numero_cartas 13
 
-short int lista_suit[numero_naipes] = {HEARTS, DIAMONDS, CLUBS, SPADES};
 
-short int lista_cards[numero_naipes][numero_cartas] = {
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING},
-    {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}};
-
-void randomize_card(short int *suit, short int *display_value)
+Hand *create_hand_all_cards()
 {
-    do
-    {
-        *suit = rand() % numero_naipes;
-        *display_value = rand() % numero_cartas;
-    } while (card_not_in_deck(*suit, *display_value));
+    short int lista_suit[numero_naipes] = {HEARTS, DIAMONDS, CLUBS, SPADES};
+    short int lista_cards[numero_cartas] = {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
+
+    Hand *h = cria_hand();
+    for (short int i = 0; i < numero_naipes; i++)
+        for (short int j = 0; j < numero_cartas; j++)
+            h->adiciona(h, cria_card(lista_suit[i], lista_cards[j]));
+    return h;
 }
 
 void shuffle_deck(Deck *deck)
 {
+    Hand *hand = create_hand_all_cards();
     for (short int total_cartas = (numero_cartas * numero_naipes); total_cartas > 0; total_cartas--)
     {
-        get_random_time();
-
-        short int suit, display_value;
-        randomize_card(&suit, &display_value);
-        
-        deck->push(deck, cria_card(lista_suit[suit], lista_cards[suit][display_value]));
-        lista_cards[suit][display_value] = 0;
+        seed_get_random_time();
+        short int random_index = get_random_index(hand->total);
+        // deck->push(deck, hand->removePorIndex(cards, random_index)));
     }
 }

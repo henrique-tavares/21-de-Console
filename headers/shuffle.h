@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "./failure.h"
+#include "./hand.h"
 #include "./card.h"
 #include "./deck.h"
 
