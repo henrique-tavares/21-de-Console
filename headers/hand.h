@@ -23,6 +23,8 @@ struct Hand
     void (*libera)(Hand *self);
 
     void (*adiciona)(Hand *self, Card *carta);
+    Card *(*remove)(Hand *self, int index);
+
     void (*limpa)(Hand *self);
     void (*imprime)(Hand *self);
     bool (*vazio)(Hand *self);
