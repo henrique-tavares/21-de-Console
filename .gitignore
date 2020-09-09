@@ -3,3 +3,6 @@ build/*.o
 
 # Compiled project
 21-De-Console
+
+#vscode
+.vscode
