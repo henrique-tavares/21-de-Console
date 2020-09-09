@@ -12,18 +12,20 @@ int main()
 
     while (true)
     {
-        clean_screen();
         switch (menu())
         {
         case 1:
+            clean_screen();
             game();
             break;
 
         case 2:
+            clean_screen();
             instructions();
             break;
 
         case 3:
+            clean_screen();
             credits();
             break;
         case 0:
