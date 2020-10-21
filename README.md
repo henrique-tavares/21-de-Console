@@ -35,15 +35,15 @@ Da mesma forma que compilamos o projeto, no mesmo diretório, ou seja, onde est�
 Ou execute o binário compilado, que deve estar na raiz do projeto.
 
 ---
-# shellscript way
+## shellscript way
 
-## Compilação:
+### Compilação:
 Na raiz, execute o seguinte comando
 
 ```gcc $(ls src/*) -o 21-de-console```
 
----
-## Execução:
+
+### Execução:
 Execute o arquivo gerado na raiz
 
 ```./21-de-console```
