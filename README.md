@@ -3,14 +3,19 @@
 
 ---
 
+## Divisão de arquitetura
+ - [X] objetos
+ - [X] estruturas
+ - [X] entidades
+
 ## Implementações de estruturas
  - [X] lista encadeada simples dinâmica
  - [x] pilha dinâmica
 
 ---
-# Cmake way
+## Cmake way
 
-## instale o Cmake:
+### instale o Cmake:
 para rodar o projeto facilmente, instale a ferramenta Cmake para facilitar o build e execução.
 
 para distribuições baseadas em debian:
@@ -21,13 +26,13 @@ sudo add-apt-repository ppa:george-edison55/cmake-3.x
 sudo apt-get update
 sudo apt-get install cmake
 ```
----
-## Compilação:
+
+### Compilação:
 Na raiz do projeto onde está localizado o arquivo Makefile, execute o seguinte comando no terminal:
 
 ```make build``` ou apenas ```make```.
 
-## Execução:
+### Execução:
 Da mesma forma que compilamos o projeto, no mesmo diretório, ou seja, onde está o arquivo Makefile, execute o seguinte comando:
 
 ```make run```
