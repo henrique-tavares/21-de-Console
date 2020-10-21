@@ -11,19 +11,7 @@
  - [x] pilha dinâmica
 
 ---
-## Cmake way
-
-### instale o Cmake:
-para rodar o projeto facilmente, instale a ferramenta Cmake para facilitar o build e execução.
-
-para distribuições baseadas em debian:
-
-```
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:george-edison55/cmake-3.x
-sudo apt-get update
-sudo apt-get install cmake
-```
+## Usando Makefile (Recomendado):
 
 ### Compilação:
 Na raiz do projeto onde está localizado o arquivo Makefile, execute o seguinte comando no terminal:
@@ -38,7 +26,8 @@ Da mesma forma que compilamos o projeto, no mesmo diretório, ou seja, onde est�
 Ou execute o binário compilado, que deve estar na raiz do projeto.
 
 ---
-## shellscript way
+## Usando Comandos Bash:
+Caso tenha tido problemas na utilização do Makefile.
 
 ### Compilação:
 Na raiz, execute o seguinte comando
