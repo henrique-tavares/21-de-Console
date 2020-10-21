@@ -8,6 +8,8 @@
  - [x] pilha dinâmica
 
 ---
+# Cmake way
+
 ## instale o Cmake:
 para rodar o projeto facilmente, instale a ferramenta Cmake para facilitar o build e execução.
 
@@ -33,5 +35,18 @@ Da mesma forma que compilamos o projeto, no mesmo diretório, ou seja, onde est�
 Ou execute o binário compilado, que deve estar na raiz do projeto.
 
 ---
+# shellscript way
 
+## Compilação:
+Na raiz, execute o seguinte comando
+
+```gcc $(ls src/*) -o 21-de-console```
+
+---
+## Execução:
+Execute o arquivo gerado na raiz
+
+```./21-de-console```
+
+---
 **Obs**: testado apenas em ambiente Linux, não recomendamos executar este projeto em ambiente Windows.
