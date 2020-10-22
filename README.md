@@ -12,6 +12,9 @@
 
 ---
 ## Usando Makefile (Recomendado):
+Caso não tenha o comando ```make``` instalado. Pode-se instalá-lo com o seguinte comando:
+
+```sudo apt-get install make```
 
 ### Compilação:
 Na raiz do projeto onde está localizado o arquivo Makefile, execute o seguinte comando no terminal:
@@ -27,7 +30,7 @@ Ou execute o binário compilado, que deve estar na raiz do projeto.
 
 ---
 ## Usando Comandos Bash:
-Caso tenha tido problemas na utilização do Makefile.
+Caso tenha tido problemas na utilização do Makefile, ou não queira utilizá-lo.
 
 ### Compilação:
 Na raiz, execute o seguinte comando
