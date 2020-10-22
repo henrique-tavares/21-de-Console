@@ -11,7 +11,7 @@
  - [x] pilha dinâmica
 
 ---
-## Usando Makefile (Recomendado):
+## Usando Make (Recomendado):
 Caso não tenha o comando ```make``` instalado. Pode-se instalá-lo com o seguinte comando:
 
 ```sudo apt-get install make```
@@ -30,7 +30,7 @@ Ou execute o binário compilado, que deve estar na raiz do projeto.
 
 ---
 ## Usando Comandos Bash:
-Caso tenha tido problemas na utilização do Makefile, ou não queira utilizá-lo.
+Caso tenha tido problemas na utilização do Make, ou não queira utilizá-lo.
 
 ### Compilação:
 Na raiz, execute o seguinte comando
